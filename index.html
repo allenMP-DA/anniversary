@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy 3rd Anniversary ❤️</title>
+<style>
+  /* 🌸 Reset & Body */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* 🌸 Floating Hearts */
+  .floating-heart {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  /* 🌸 Sparkles */
+  .sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* 🌸 Container */
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 60px 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* 🌸 Headings */
+  h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #ffe1f0, #ff9a9e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  h2 {
+    font-weight: normal;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+  }
+
+  .heart {
+    font-size: 80px;
+    animation: pulse 1.5s infinite, fadeIn 2s forwards;
+    opacity: 0;
+    animation-delay: 1s;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* 🌸 Message */
+  .message {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 40px 30px;
+    border-radius: 20px;
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 1.5s;
+    position: relative;
+  }
+
+  /* 🌸 Photo Grid */
+  .photo-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .photo {
+    width: 100%;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+  }
+
+  .photo:hover {
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0 15px 30px rgba(255,105,180,0.6);
+    filter: brightness(1.1);
+  }
+
+  /* 🌸 Footer */
+  footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    opacity: 0.8;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 2.5s;
+  }
+
+  @media (max-width: 600px) {
+    .photo-layout {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- 🌸 Container -->
+<div class="container">
+  <div class="heart">❤️</div>
+  <h1>Happy 3rd Anniversary</h1>
+  <h2>To the love of my life</h2>
+
+  <div class="message">
+    <p>
+      Three years ago, we started a journey filled with love, laughter,
+      and unforgettable memories. Every day with you is a blessing,
+      and I’m so grateful for all the moments we’ve shared.
+    </p>
+    <p>
+      Thank you for your patience, your love, and your constant support.
+      I can’t wait to create many more memories with you.
+    </p>
+    <p>
+      Here’s to us — past, present, and future. 💕
+    </p>
+  </div>
+
+  <!-- 🌸 Photo Grid -->
+  <div class="photo-layout">
+    <div class="photo" style="background-image: url('1.jpg');"></div>
+    <div class="photo" style="background-image: url('2.jpg');"></div>
+    <div class="photo" style="background-image: url('3.jpg');"></div>
+    <div class="photo" style="background-image: url('4.jpg');"></div>
+    <div class="photo" style="background-image: url('5.jpg');"></div>
+    <div class="photo" style="background-image: url('6.jpg');"></div>
+  </div>
+
+  <footer>
+    <p>Forever & Always 💕</p>
+  </footer>
+</div>
+
+<!-- 🌸 Background Music -->
+<audio autoplay loop>
+  <source src="love_song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // 🌸 Floating Hearts
+  const heartEmojis = ['❤️','💖','💕','💗'];
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+
+    const size = 15 + Math.random() * 30;
+    heart.style.fontSize = size + 'px';
+
+    // Random horizontal position
+    heart.style.left = Math.random() * 100 + 'vw';
+
+    // Random vertical start anywhere on screen
+    const startY = Math.random() * window.innerHeight;
+    heart.style.top = startY + 'px';
+
+    const duration = 4 + Math.random() * 5;
+
+    document.body.appendChild(heart);
+
+    // Animate upwards using Web Animations API
+    heart.animate(
+      [
+        { transform: 'translateY(0) scale(0.5)', opacity: 0.5 },
+        { transform: `translateY(-${startY + 100}px) scale(1)`, opacity: 0 }
+      ],
+      { duration: duration * 1000, iterations: 1, easing: 'linear' }
+    );
+
+    setTimeout(() => heart.remove(), duration * 1000);
+  }
+
+  // Create some hearts immediately
+  for (let i = 0; i < 7; i++) createHeart();
+
+  // Generate hearts dynamically
+  setInterval(createHeart, 500);
+
+  // 🌸 Sparkles
+  function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.style.left = Math.random() * 100 + 'vw';
+    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+    const size = 2 + Math.random() * 3;
+    sparkle.style.width = size + 'px';
+    sparkle.style.height = size + 'px';
+    const duration = 4 + Math.random() * 4;
+
+    document.body.appendChild(sparkle);
+
+    sparkle.animate(
+      [
+        { transform: 'translateY(0) scale(0.2)', opacity: 0 },
+        { transform: `translateY(-${window.innerHeight + 50}px) scale(1)`, opacity: 1 },
+        { transform: `translateY(-${window.innerHeight + 100}px) scale(1)`, opacity: 0 }
+      ],
+      { duration: duration * 1000, iterations: 1, easing: 'linear' }
+    );
+
+    setTimeout(() => sparkle.remove(), duration * 1000);
+  }
+
+  setInterval(createSparkle, 300);
+
+  // 🌸 Fade in photos one by one
+  const photos = document.querySelectorAll('.photo');
+  photos.forEach((photo, i) => {
+    setTimeout(() => {
+      photo.style.transform = 'scale(1)';
+      photo.style.opacity = '1';
+    }, i * 500 + 2000);
+  });
+</script>
+
+</body>
+</html>
